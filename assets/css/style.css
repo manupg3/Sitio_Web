@@ -11,7 +11,33 @@
 :root {
   scroll-behavior: smooth;
 }
+.modal-content{
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.form-control{
+  padding: 2%;
+}
+.form-label{
+  color:black;
+}
+button.close {
+  background: transparent;
+  /* border-radius: 30px; */
+  border: none;
+}
 
+.forgot-password{
+  margin-top: -10px;
+}
+.btn-login
+{
+  width: -webkit-fill-available;
+}
+.modal-backdrop
+{
+  z-index:0 !important;
+}
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
