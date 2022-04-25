@@ -57,18 +57,18 @@
 <!-- Pills content -->
 <div class="tab-content">
   <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-    <form>
+    <form onsubmit="return false;">
 
       <!-- Email input -->
       <div class="form-outline mb-4">
-        <input type="email" id="loginName" class="form-control" />
-        <label class="form-label" for="loginName">Email or username</label>
+        <input type="email" id="email" name="email" class="form-control"  required/>
+        <label class="form-label" for="email">Email or username</label>
       </div>
 
       <!-- Password input -->
       <div class="form-outline mb-4">
-        <input type="password" id="loginPassword" class="form-control" />
-        <label class="form-label" for="loginPassword">Password</label>
+        <input type="password" id="password" name="password"  class="form-control" required/>
+        <label class="form-label" for="password">Password</label>
       </div>
 
       <!-- 2 column grid layout -->
@@ -88,7 +88,7 @@
       </div>
 
       <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4 btn-login" onclick="logIn();">Iniciar Sesion</button>
+      <button class="btn btn-primary btn-block mb-4 btn-login" onclick="logIn();">Iniciar Sesion</button>
 
       <!-- Register buttons -->
      
