@@ -165,6 +165,9 @@ section {
   visibility: visible;
   opacity: 1;
 }
+.buttons-header {
+  margin-left: 25px;
+}
 
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
@@ -178,9 +181,11 @@ section {
 # Header
 --------------------------------------------------------------*/
 .header {
+  background: #fff;
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+  box-shadow: 1px 1px 10px 1px #c2c2c263;
 }
 .header.header-scrolled {
   background: #fff;

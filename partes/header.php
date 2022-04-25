@@ -1,3 +1,21 @@
+<?php 
+   
+   session_start();
+      
+      if(isset($_SESSION['user']))
+      { 
+          
+        $userEmail = $_SESSION['user']['email']; 
+        $userNombre = $_SESSION['user']['nombre']; 
+
+
+      }
+      else{
+            
+      }
+        
+?>
+
 <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
@@ -9,50 +27,54 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>¿Que Ofrecemos?</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="http://localhost/Sitio_Web/index.php#services">Servicio</a></li>
+              <li><a href="http://localhost/Sitio_Web/index.php#portfolio">Portfolio</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a href="blog.php">Blog</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
           <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
- Log In
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="buttons-header">
+            <div class="dropdown">
+
+          <?php if(isset($_SESSION['user'])){   ?>
+            <a href="http://localhost/Sitio_Web/perfilpage.php"> <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+          <?php echo $userEmail ?>    
+          </button></a>
+          <ul class="dropdown-menu">
+      <li><a href="http://localhost/Sitio_Web/perfilpage.php">Mi Perfil</a></li>
+      <li><a href="#" class="cerrarSession">Cerrar Sesion</a></li>
+    </ul>
+          </div> 
+          <?php  } else {  ?>
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLogin">
+           Log In
+         </button> 
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegister">
+           Registrarse
+         </button> 
+         <?php  } ?>
+         </div>
+          
+
+<!-- Modal Login -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalLogin" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+        <h5 class="modal-title" id="ModalLoginLabel">LOGIN</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <!-- Pills navs -->
-<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
 
-</ul>
-<!-- Pills navs -->
 
 <!-- Pills content -->
 <div class="tab-content">
@@ -93,76 +115,7 @@
       <!-- Register buttons -->
      
     </form>
-  </div>
-  <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-    <form>
-      <div class="text-center mb-3">
-        <p>Sign up with:</p>
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-facebook-f"></i>
-        </button>
 
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-google"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-twitter"></i>
-        </button>
-
-        <button type="button" class="btn btn-link btn-floating mx-1">
-          <i class="fab fa-github"></i>
-        </button>
-      </div>
-
-      <p class="text-center">or:</p>
-
-      <!-- Name input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerName" class="form-control" />
-        <label class="form-label" for="registerName">Name</label>
-      </div>
-
-      <!-- Username input -->
-      <div class="form-outline mb-4">
-        <input type="text" id="registerUsername" class="form-control" />
-        <label class="form-label" for="registerUsername">Username</label>
-      </div>
-
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="registerEmail" class="form-control" />
-        <label class="form-label" for="registerEmail">Email</label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerPassword" class="form-control" />
-        <label class="form-label" for="registerPassword">Password</label>
-      </div>
-
-      <!-- Repeat Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="registerRepeatPassword" class="form-control" />
-        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
-      </div>
-
-      <!-- Checkbox -->
-      <div class="form-check d-flex justify-content-center mb-4">
-        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
-          aria-describedby="registerCheckHelpText" />
-        <label class="form-check-label" for="registerCheck">
-          I have read and agree to the terms
-        </label>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-    </form>
-  </div>
-</div>
-<!-- Pills content -->
-      </div>
 
     </div>
   </div>
@@ -173,3 +126,58 @@
 
     </div>
   </header>
+
+  
+
+<!-- Modal Register-->
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrarse</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form onsubmit="return false;">
+
+<!-- Email input -->
+<div class="form-outline mb-4">
+  <input type="text" id="nombreRegister" name="nombreRegister" class="form-control"  required/>
+  <label class="form-label" for="nombre">Tu Nombre</label>
+</div>
+
+<div class="form-outline mb-4">
+  <input type="email" id="emailRegister" name="emailRegister" class="form-control"  required/>
+  <label class="form-label" for="email">Email</label>
+</div>
+
+<!-- Password input -->
+<div class="form-outline mb-4">
+  <input type="password" id="passwordRegister" name="passwordRegister"  class="form-control" required/>
+  <label class="form-label" for="passwordRegister">Password</label>
+</div>
+
+<!-- 2 column grid layout -->
+<div class="row mb-4">
+  <div class="col-md-6 d-flex justify-content-center">
+  </div>
+</div>
+
+<!-- Submit button -->
+<button class="btn btn-primary btn-block mb-4 btn-login" onclick="Register();">Registrarse</button>
+
+<!-- Register buttons -->
+
+</form>
+      </div>
+    
+    </div>
+  </div>
+</div>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="assets/js/users.js"></script>
